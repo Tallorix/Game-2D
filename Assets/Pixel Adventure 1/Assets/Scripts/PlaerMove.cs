@@ -30,14 +30,14 @@ public class PlaerMove : MonoBehaviour
             _animator.SetTrigger(_nameParJump);
         }
 
-        //if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-        //{
-        //    _animator.SetBool(_namePar, true);
-        //}
-        //else
-        //{
-        //    _animator.SetBool(_namePar, false);
-        //}
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            _animator.SetBool(_namePar, true);
+        }
+        else
+        {
+            _animator.SetBool(_namePar, false);
+        }
 
         if (Input.GetKey(KeyCode.A))
         {
