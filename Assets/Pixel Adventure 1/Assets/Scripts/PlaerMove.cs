@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlaerMove : MonoBehaviour
 {
+    [SerializeField] private GameObject _winPanel;
     [SerializeField] private Button _restartButton;
     [SerializeField] private Text _countAppleText;
 
@@ -19,11 +20,13 @@ public class PlaerMove : MonoBehaviour
     private bool _isGround;
     private string _nameGround = "Ground";
     private string _nameApple = "Apple";
+    private string _nameFinish = "Finish";
 
     private int _countApple = 0;
 
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space) && _isGround)
         {
             _rb.AddForce(Vector2.up * _jumpforce, ForceMode2D.Impulse);
@@ -67,6 +70,12 @@ public class PlaerMove : MonoBehaviour
 
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.tag == _nameFinish)
+        {
+            _winPanel.SetActive(true);
+        }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -76,6 +85,7 @@ public class PlaerMove : MonoBehaviour
             _isGround = false;
         }
     }
+    
 
     private void OnDestroy()
     {
